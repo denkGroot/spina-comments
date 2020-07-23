@@ -1,0 +1,15 @@
+%tr
+  %td.nowrap.align-middle{style: "width: 40px"}
+    = image_tag comment.gravatar_url, width: 40, style: 'border-radius: 20px'
+  %td.nowrap
+    = comment.full_name
+    %small= comment.email
+  %td
+    %em.text-muted{style: "white-space: pre-wrap"}= comment.body
+    %small=l comment.created_at, format: :short
+  %td.nowrap= comment.commentable.materialized_path
+  %td.text-right.nowrap
+    - unless comment.approved?
+      = link_to 'Approve', spina.approve_comments_admin_comment_path(comment), class: 'button button-primary button-small', data: {method: :post, confirm: "Are you sure?"}
+    = link_to spina.comments_admin_comment_path(comment), class: 'button button-danger button-small', data: {method: :delete, confirm: t('spina.delete_confirmation', subject: "comment ##{comment.id}")} do
+      = icon('trash')

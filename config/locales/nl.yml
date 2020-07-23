@@ -1,0 +1,9 @@
+nl:
+  spina: 
+    comments: 
+      title: Comments
+  activerecord:
+    models:
+      spina/comments/comment:
+        one: Comment
+        other: Comments

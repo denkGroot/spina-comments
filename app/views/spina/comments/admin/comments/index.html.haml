@@ -1,0 +1,18 @@
+%header#header
+  .breadcrumbs
+    = render_breadcrumbs separator: '<div class="divider"></div>'
+
+    = yield(:header_actions) if content_for?(:header_actions)
+
+.table-container.infinite-table
+  %table.table.table-clickable
+    %thead
+      %tr
+        %th 
+        %th= Spina::Comments::Comment.human_attribute_name(:commenter)
+        %th= Spina::Comments::Comment.human_attribute_name(:body)
+        %th= Spina::Comments::Comment.human_attribute_name(:commentable)
+        %th
+
+    %tbody= render collection: @comments, partial: 'comment'
+      
