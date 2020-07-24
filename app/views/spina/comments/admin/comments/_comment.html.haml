@@ -7,7 +7,9 @@
   %td
     %em.text-muted{style: "white-space: pre-wrap"}= comment.body
     %small=l comment.created_at, format: :short
-  %td.nowrap= comment.commentable.materialized_path
+  %td.nowrap
+    = comment.commentable.materialized_path
+    %small= comment.locale
   %td.text-right.nowrap
     - unless comment.approved?
       = link_to 'Approve', spina.approve_comments_admin_comment_path(comment), class: 'button button-primary button-mini', data: {method: :post, confirm: "Are you sure?"}
