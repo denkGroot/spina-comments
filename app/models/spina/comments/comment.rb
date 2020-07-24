@@ -8,6 +8,8 @@ module Spina::Comments
     scope :approved, -> { where(approved: true) }
     scope :unapproved, -> { where(approved: false) }
 
+    validates :body, presence: true
+
     def full_name
       commenter.name
     end
@@ -22,7 +24,7 @@ module Spina::Comments
 
     def gravatar_url
       email_hash = Digest::MD5.hexdigest(email)
-      "https://www.gravatar.com/avatar/#{email_hash}"
+      "https://www.gravatar.com/avatar/#{email_hash}?d=mp"
     end
 
   end
