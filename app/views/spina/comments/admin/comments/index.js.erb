@@ -1,0 +1,3 @@
+document.querySelector(".infinite-table table tbody").insertAdjacentHTML("beforeend", "<%=j render partial: 'comment', collection: @comments %>")
+
+$('.pagination').html("<%=j link_to_next_page @comments, 'Next' %>").infiniteScroll()

@@ -1,0 +1,17 @@
+= form_with model: @comment, url: spina.comments_admin_comment_path(@comment) do |f|
+  %header#header
+    #header_actions
+      = button_tag type: :submit, class: 'button button-primary' do
+        = icon('check')
+        = t('spina.comments.save')
+
+    .breadcrumbs= render_breadcrumbs separator: '<div class="divider"></div>'
+
+  .well
+    .horizontal-form
+      .horizontal-form-group
+        .horizontal-form-label
+          = Spina::Comments::Comment.human_attribute_name :body
+
+        .horizontal-form-content
+          = f.text_area :body, placeholder: Spina::Comments::Comment.human_attribute_name(:body)

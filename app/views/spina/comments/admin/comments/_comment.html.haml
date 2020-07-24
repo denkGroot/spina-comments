@@ -10,6 +10,10 @@
   %td.nowrap= comment.commentable.materialized_path
   %td.text-right.nowrap
     - unless comment.approved?
-      = link_to 'Approve', spina.approve_comments_admin_comment_path(comment), class: 'button button-primary button-small', data: {method: :post, confirm: "Are you sure?"}
-    = link_to spina.comments_admin_comment_path(comment), class: 'button button-danger button-small', data: {method: :delete, confirm: t('spina.delete_confirmation', subject: "comment ##{comment.id}")} do
+      = link_to 'Approve', spina.approve_comments_admin_comment_path(comment), class: 'button button-primary button-mini', data: {method: :post, confirm: "Are you sure?"}
+
+    = link_to spina.edit_comments_admin_comment_path(comment), class: 'button button-default button-mini icon-only' do
+      = icon('pencil')
+
+    = link_to spina.comments_admin_comment_path(comment), class: 'button button-danger button-mini icon-only', data: {method: :delete, confirm: t('spina.delete_confirmation', subject: "comment ##{comment.id}")} do
       = icon('trash')
